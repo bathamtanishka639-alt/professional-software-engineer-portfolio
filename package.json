@@ -1,0 +1,17 @@
+{
+  "name": "professional-software-engineer-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.2",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}
