@@ -545,7 +545,7 @@
 
   if (copyResumeUrlBtn) {
     copyResumeUrlBtn.addEventListener("click", () => {
-      const fullUrl = `${window.location.origin}/assets/resume/Tanishka_Batham_Resume.pdf`;
+      const fullUrl = `${window.location.origin}/assets/resume/Tanishka_Batham_Resume.pdf?v=2`;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(fullUrl).then(() => {
           showToast("Resume PDF link copied to clipboard!");
