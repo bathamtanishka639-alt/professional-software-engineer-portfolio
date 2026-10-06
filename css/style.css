@@ -579,24 +579,39 @@ code {
 
 /* Portrait plate */
 .hero__aside {
-  max-width: 270px;
+  max-width: 240px;
   width: 100%;
 }
-.portrait { margin: 0; }
+.portrait {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .portrait__frame {
   position: relative;
-  border: 1px solid var(--line-strong);
-  border-radius: 10px;
-  padding: 8px;
-  background: color-mix(in oklab, var(--surface) 70%, transparent);
-  box-shadow: var(--shadow);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding: 2px;
+  background: var(--surface);
+  border: 4px solid var(--surface-2);
+  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.16), 0 0 0 1px color-mix(in oklab, var(--line) 70%, transparent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+.portrait__frame:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.22), 0 0 0 1px var(--accent);
 }
 .portrait__frame img {
   width: 100%;
+  height: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  object-position: top center;
-  border-radius: 6px;
+  object-position: center 10%;
+  border-radius: 50%;
+  display: block;
 }
 .portrait__frame.is-missing img { display: none; }
 .portrait__frame.is-missing::after {
@@ -606,10 +621,10 @@ code {
   aspect-ratio: 1 / 1;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 64px;
+  font-size: 56px;
   color: var(--muted);
   background: var(--surface-2);
-  border-radius: 2px;
+  border-radius: 50%;
 }
 .portrait__initials {
   position: absolute;
@@ -618,31 +633,27 @@ code {
   place-items: center;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(56px, 7vw, 88px);
+  font-size: clamp(48px, 6vw, 72px);
   letter-spacing: .04em;
   color: color-mix(in oklab, var(--ink) 26%, transparent);
   mix-blend-mode: multiply;
   pointer-events: none;
 }
 [data-theme="dark"] .portrait__initials { mix-blend-mode: screen; color: rgba(236, 232, 223, .3); }
-.portrait__corner {
-  position: absolute;
-  width: 22px; height: 22px;
-  border: 2px solid var(--accent);
-}
-.portrait__corner--tl { top: -6px; left: -6px; border-right: 0; border-bottom: 0; }
-.portrait__corner--br { bottom: -6px; right: -6px; border-left: 0; border-top: 0; }
+.portrait__corner { display: none; }
 
 .portrait__plate {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 6px 14px;
-  margin-top: 12px;
+  margin-top: 14px;
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--muted);
+  text-align: center;
 }
 .portrait__plate span { position: relative; padding-left: 12px; }
 .portrait__plate span::before {
@@ -1891,8 +1902,9 @@ a.contact__value.tag--ph { border-bottom: 1px dashed color-mix(in oklab, var(--a
 }
 
 @media (max-width: 1000px) {
-  .hero__inner { grid-template-columns: minmax(0, 1fr); }
-  .hero__aside { max-width: 420px; }
+  .hero__inner { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .hero__aside { max-width: 200px; margin: 0 auto; }
+  .portrait__frame { width: 160px; height: 160px; }
   .about { grid-template-columns: minmax(0, 1fr); }
   .cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .profile-grid { grid-template-columns: minmax(0, 1fr); }
